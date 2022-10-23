@@ -1,6 +1,7 @@
 package cmd
 
 import (
+	"encoding/json"
 	"net/http"
 	"os"
 	"path"
@@ -126,7 +127,8 @@ func cobraLoadConfig(cmd *cobra.Command, args []string) error {
 			if err != nil {
 				return errors.Wrapf(err, "can not load config file: %s", configFile)
 			}
-			log.Println("userConfig:", userConfig)
+			data, _ := json.MarshalIndent(userConfig, "\n", "")
+			log.Println("userConfig:", string(data))
 		} else if os.IsNotExist(err) {
 			// config file doesn't exist, we should use the empty config
 			userConfig = &bbgo.Config{}
