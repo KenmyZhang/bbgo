@@ -2,6 +2,7 @@ package bbgo
 
 import (
 	"context"
+	"fmt"
 
 	"github.com/pkg/errors"
 )
@@ -41,6 +42,8 @@ func BootstrapEnvironment(ctx context.Context, environ *Environment, userConfig 
 	if err := environ.ConfigureNotificationSystem(userConfig); err != nil {
 		return errors.Wrap(err, "notification configure error")
 	}
+	fmt.Printf("userConfig:%v\n", userConfig)
+	fmt.Printf("environ:%v\n", environ)
 
 	return nil
 }

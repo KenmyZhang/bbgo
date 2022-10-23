@@ -88,10 +88,12 @@ func main() {
 	}
 
 	environ := bbgo.NewEnvironment()
+	log.Println("environ", environ)
 	trader := bbgo.NewTrader(environ)
 
 	// we could initialize the environment from the settings
 	if setup == nil {
+		log.Println("userConfig", userConfig)
 		if err := bbgo.BootstrapEnvironment(ctx, environ, userConfig); err != nil {
 			log.WithError(err).Error("failed to bootstrap environment")
 			return
