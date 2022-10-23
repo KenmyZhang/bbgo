@@ -1,3 +1,11 @@
+export OKEX_API_KEY="ef7071d9-c195-4783-be8a-88b7ec4b46f3"
+export OKEX_API_SECRET="CC6CEB70653EF6EB9A71C301FB6543B1"
+export OKEX_API_PASSPHRASE=Zhang_4538001
+
+
+insert into goose_db_version (id, version_id,is_applied) values (1,20220531015005,1);
+
+
 # BBGO
 
 A crypto trading bot framework written in Go. The name bbgo comes from the BB8 bot in the Star Wars movie.
