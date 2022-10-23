@@ -9,14 +9,14 @@ import (
 	"time"
 
 	"github.com/joho/godotenv"
-	"github.com/lestrrat-go/file-rotatelogs"
+	rotatelogs "github.com/lestrrat-go/file-rotatelogs"
 	"github.com/pkg/errors"
 	"github.com/prometheus/client_golang/prometheus/promhttp"
 	"github.com/rifflock/lfshook"
 	log "github.com/sirupsen/logrus"
 	"github.com/spf13/cobra"
 	"github.com/spf13/viper"
-	"github.com/x-cray/logrus-prefixed-formatter"
+	prefixed "github.com/x-cray/logrus-prefixed-formatter"
 
 	"github.com/c9s/bbgo/pkg/bbgo"
 
@@ -126,7 +126,7 @@ func cobraLoadConfig(cmd *cobra.Command, args []string) error {
 			if err != nil {
 				return errors.Wrapf(err, "can not load config file: %s", configFile)
 			}
-
+			log.Println("userConfig:", userConfig)
 		} else if os.IsNotExist(err) {
 			// config file doesn't exist, we should use the empty config
 			userConfig = &bbgo.Config{}
