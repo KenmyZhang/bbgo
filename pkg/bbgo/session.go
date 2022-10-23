@@ -677,11 +677,14 @@ func (session *ExchangeSession) InitExchange(name string, ex types.Exchange) err
 	var exchangeName = session.ExchangeName
 	if ex == nil {
 		if session.PublicOnly {
+			log.Info("NewPublic", session)
 			ex, err = exchange2.NewPublic(exchangeName)
 		} else {
 			if session.Key != "" && session.Secret != "" {
+				log.Info("NewStandard", session)
 				ex, err = exchange2.NewStandard(exchangeName, session.Key, session.Secret, session.Passphrase, session.SubAccount)
 			} else {
+				log.Info("NewWithEnvVarPrefix", session)
 				ex, err = exchange2.NewWithEnvVarPrefix(exchangeName, session.EnvVarPrefix)
 			}
 		}
