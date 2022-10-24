@@ -681,7 +681,7 @@ func (session *ExchangeSession) InitExchange(name string, ex types.Exchange) err
 			ex, err = exchange2.NewPublic(exchangeName)
 		} else {
 			if session.Key != "" && session.Secret != "" {
-				log.Info("NewStandard", session)
+				log.Info(fmt.Sprintf("NewStandard, session:%+v", session))
 				ex, err = exchange2.NewStandard(exchangeName, session.Key, session.Secret, session.Passphrase, session.SubAccount)
 			} else {
 				log.Info("NewWithEnvVarPrefix", session)

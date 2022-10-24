@@ -129,6 +129,7 @@ export default function AddExchangeSessionForm({ onBack, onAdded }) {
             >
               <MenuItem value={'binance'}>Binance</MenuItem>
               <MenuItem value={'max'}>Max</MenuItem>
+              <MenuItem value={'okex'}>Okex</MenuItem>
             </Select>
           </FormControl>
         </Grid>
